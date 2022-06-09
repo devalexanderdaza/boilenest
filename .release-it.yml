@@ -1,0 +1,23 @@
+github:
+  release: true
+
+git:
+  commitMessage: 'chore(release): v${version}'
+  tagAnnotation: 'chore(release): v${version}'
+  tagName: 'v${version}'
+  changelog: 'npx auto-changelog --stdout --commit-limit false --unreleased --template https://raw.githubusercontent.com/release-it/release-it/master/templates/changelog-compact.hbs --ignore-commit-pattern "🥚.*"'
+
+hooks:
+  after:bump:
+    - 'yarn build'
+    - 'npx auto-changelog --ignore-commit-pattern "🥚.*" --commit-limit false -p -t keepachangelog'
+    - 'yarn release-image'
+    - 'git status'
+  before:git:release:
+    - 'yarn release-image'
+
+# automatic publish from GitHub workflow
+npm:
+  publish: false
+  private: true
+  registry: 'OMITTED'

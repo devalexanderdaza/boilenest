@@ -1,0 +1,29 @@
+{
+  "ignore": [
+    ".github",
+    "docs",
+    ".husky",
+    "**/.*",
+    "**/*.http",
+    "**/*.lock",
+    "**/*.md",
+    "node_modules",
+    "log"
+  ],
+  "license": "LICENSE.header",
+  "licenseFormats": {
+    "js|ts": {
+      "prepend": "/*",
+      "append": " */",
+      "eachLine": {
+        "prepend": " * "
+      }
+    },
+    "dotfile": {
+      "eachLine": {
+        "prepend": "# "
+      }
+    }
+  },
+  "trailingWhitespace": "TRIM"
+}
